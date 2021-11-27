@@ -100,10 +100,10 @@ WSGI_APPLICATION = 'aComprarProject.wsgi.application'
 DATABASES = {
   'default': {
     'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    'NAME': 'd68pcqpiahbu4a',
-    'USER': 'qvmfkdbocqvqxp',
-    'PASSWORD': '83992660a6834b0693bc04cffe29873d49f9d823c6871cacbe83623f2c7ddde7',
-    'HOST': 'ec2-54-225-190-241.compute-1.amazonaws.com',
+    'NAME': 'dbo69e1e9h3adm',
+    'USER': 'vstnalwdwsjwdf',
+    'PASSWORD': '863dd3f1c08dbcef495d4afb37fe875c2c73f3bcf18fc9d1d231439c8942d7c2',
+    'HOST': 'ec2-52-72-155-37.compute-1.amazonaws.com',
     'PORT': '5432',
     }
 }

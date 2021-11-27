@@ -3,23 +3,23 @@ from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseU
 from django.contrib.auth.hashers import make_password
 
 class UserManager(BaseUserManager):
-    def create_user(self, nombre, password=None):
+    def create_user(self, username, password=None):
         """
         Creates and saves a user with the given username and password.
         """
-        if not nombre:
-            raise ValueError('El usuario debe tener un nombre')
-        user = self.model(nombre=nombre)
+        if not username:
+            raise ValueError('El usuario debe tener un username')
+        user = self.model(username=username)
         user.set_password(password)
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, nombre, password):
+    def create_superuser(self, username, password):
         """
         Creates and saves a superuser with the given username and password.
         """
         user = self.create_user(
-        nombre=nombre,
+        username=username,
         password=password,
         )
         user.is_admin = True
@@ -27,21 +27,17 @@ class UserManager(BaseUserManager):
         return user
 
 class User(AbstractBaseUser, PermissionsMixin):
-    cedula = models.BigIntegerField(primary_key=True)
-    nombre = models.CharField('Nombre', max_length = 15)
+    id = models.BigAutoField(primary_key=True)
+    username = models.CharField('Username', max_length = 15 , unique=True)
+    nombre = models.CharField('Nombre', max_length=20)
     apellido = models.CharField('Apellido', max_length=20)
     password = models.CharField('Contraseña', max_length = 256)
     email = models.EmailField('Email',unique=True, max_length = 100)
     telefono = models.BigIntegerField("Telefono")
-    fnacimiento = models.DateField("FechaNacimiento")
-    pais = models.CharField("Pais", max_length=10)
-    departamento = models.CharField("Departamento", max_length=12)
-    ciudad = models.CharField("Ciudad", max_length=12)
-    direccion = models.CharField("Dirección", max_length=30)
      
     def save(self, **kwargs):
         some_salt = 'mMUj0DrIK6vgtdIYepkIxN'
         self.password = make_password(self.password, some_salt)
         super().save(**kwargs)
     objects = UserManager()
-    USERNAME_FIELD = 'cedula'
+    USERNAME_FIELD = 'username'

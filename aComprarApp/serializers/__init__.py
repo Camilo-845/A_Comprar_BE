@@ -1,4 +1,3 @@
 from .usuarioSerializer import  usuarioSerializer
-from .categoriaSerializer import categoriaSerializer
 from .comprasSerializer import comprasSerializer
 from .productoSerializer import productoSerializer
