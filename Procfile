@@ -1,1 +1,1 @@
-web: gunicorn aCompraProject.wsgi
+web: gunicorn aComprarProject.wsgi
