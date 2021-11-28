@@ -11,7 +11,7 @@ class UserCreateView(views.APIView):
         serializer.is_valid(raise_exception=True)
         serializer.save()
 
-        tokenData = {"cedula": request.data["cedula"],
+        tokenData = {"username": request.data["username"],
                      "password": request.data["password"]}
         tokenSerializer = TokenObtainPairSerializer(data=tokenData)
         tokenSerializer.is_valid(raise_exception=True)

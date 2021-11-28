@@ -5,4 +5,4 @@ class Producto(models.Model):
     nombre = models.CharField('Nombre', max_length=25)
     caracteristica = models.TextField('Caracteristica')
     precio = models.FloatField('precio')
-    categoria = models.TextChoices('categoria', 'ALIMENTO TECNOLOGIA ACCESORIO OTRO')
+    categoria = models.TextField('categoria',max_length=25 )
